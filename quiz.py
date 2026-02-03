@@ -89,15 +89,18 @@ class CyberQuiz(tk.Tk):
     def load_quiz(self, filepath):
         """Loads questions, options, and answer index from CSV."""
         questions = []
-        with open(filepath, 'r', newline='', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            next(reader, None)
-            for row in reader:
-                if len(row) >= 6:
-                    question = row['question']
-                    options = [row['option_a'], row['option_b'], row['option_c'] ,row['option_d']]
-                    correct_answer = int(row['correct_answer'])
-                    questions.append((question, options, correct_answer))
+        try:
+            with open(filepath, 'r', newline='', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                next(reader, None)
+                for row in reader:
+                    if len(row) >= 6:
+                        question = row['question']
+                        options = [row['option_a'], row['option_b'], row['option_c'] ,row['option_d']]
+                        correct_answer = int(row['correct_answer'])
+                        questions.append((question, options, correct_answer))
+        except FileNotFoundError:
+            self.error_handler("The question file couldn't be found, please close the program and restart.")
         return questions
     
     def start_quiz(self):
