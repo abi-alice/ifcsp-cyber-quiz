@@ -1,0 +1,14 @@
+question,option_a,option_b,option_c,option_d,correct_answer
+"Passwords should be...?","complex and unique","similar and short","basic and easy","short and complex",0
+"What does NCSC advise for password creation?","birth date","family info","three random words","name of a pet",2
+"How should you classify data containing personally identifiable information?","SNI","Not Protectively Marked","Protect-Commercial and Contracts","Protect-Private",3
+"What should you do if you come across a suspicious email?","Click on all the links","Report and delete it","Forward the email to your colleagues","Reply to it",1
+"When using a VPN, what can't you hide?","Your identity","Your data","The fact you're using a VPN","Your device",2
+"What's the best way to minimise your digital footprint?","Take less photos on your phone","Post less on social media","Travel less with your phone","Use your phone more",1
+"Which part of your car is the most vulnerable to hacking?","Entertainment system","Wireless key fob","Cruise control","Warning lights",0
+"Which people in a business should be responsible for cybersecurity?","Directors","IT specialists","Managers","All personnel",3
+"Which of the following are considered personal data under GDPR?","IP address","Birthdate","Home address","All of the above",3
+"What is a firewall?","A physical wall for servers","Software monitoring network traffic","A type of virus","When a wall catches fire",1
+"How often should you update software?","Never","Twice a year","As soon as updates are available","When something breaks",2
+"What is malware?","Software designed to harm","An antivirus program","A type of hardware","A type of clothes",0
+"What is two factor authentication?","Using two passwords","Using a password and other authentication method","Having two accounts","Logging in twice",1

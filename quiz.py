@@ -4,6 +4,7 @@ import csv # Allows writing of results to CSV file
 import re # Allows format check of name entry
 from datetime import datetime # Allows timestamp to be recorded with results 
 
+'''
 questions = [
     "Passwords should be...?",
     "What does NCSC advise for password creation?",
@@ -36,6 +37,8 @@ answer_opts = [
                ]
 
 answers = [0, 2, 3, 1, 2, 1, 0, 3, 3, 1, 2, 0, 1] 
+'''
+quiz_questions = "question_and_answer.csv"
 results = "results.csv"
 
 
@@ -72,6 +75,7 @@ class CyberQuiz(tk.Tk):
         self.config(bg="pale turquoise")
         self.q_no = 0
         self.score = 0
+        self.questions = self.load_quiz(quiz_questions)
         self.selected = tk.IntVar()
         self.player_name = ""
 
@@ -85,7 +89,7 @@ class CyberQuiz(tk.Tk):
         
         
         
-        tk.Button(self.name_frame, text="Start Quiz", command=self.start_quiz, font=("Arial", 12)).pack(pady=10)
+        tk.Button(self.name_frame, text="Start Quiz", command=self.get_name, font=("Arial", 12)).pack(pady=10)
         
         self.quiz_frame = tk.Frame()
         self.quiz_frame.config(bg="pale turquoise")
@@ -132,30 +136,49 @@ class CyberQuiz(tk.Tk):
         except Exception as e:
             print(f"Something went wrong: {e}")
 
+    def load_quiz(self, filepath):
+        questions = []
+        with open(filepath, 'r', newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            next(reader, None)
+            for row in reader:
+                if len(row) >= 6:
+                    question = row['question']
+                    options = [row['option_a'], row['option_b'], row['option_c'] ,row['option_d']]
+                    correct_answer = int(row['correct_answer'])
+                    questions.append((question, options, correct_answer))
+        return questions
+    
     def start_quiz(self):
-         
-        #if self.valid_name(self.player_name) != "OK":
-         #   self.valid_name(self.player_name)
-        self.questions = questions
-        if not self.questions:
-            self.error_handler("No questions available, please try again")
-
+        
         self.name_frame.pack_forget()
         self.quiz_frame.pack(pady=20)
         self.load_question()
+    
 
+    
+
+    def load_question(self):
+        self.selected.set(-1)
+        q, options, _ = self.questions[self.q_no]
+        self.question_label.config(text=f"Q{self.q_no + 1}: {q}")
+        for i, opt in enumerate(options):
+            self.radio_buttons[i].config(text=opt)
+        
+    '''
     def load_question(self):
         self.selected.set(-1)
         self.question_label.config(text=f"Q{self.q_no + 1}: {questions[self.q_no]}")
         for i, opt in enumerate(answer_opts[self.q_no]):
             self.radio_buttons[i].config(text=opt)
-        
+    '''
+
     def submit(self):
         if self.selected.get() == -1:
             self.error_handler("You must select an answer!")
             return "No answer selected"
         
-        if self.selected.get() == answers[self.q_no]:
+        if self.selected.get() == self.questions[self.q_no][2]:
             self.score +=1
         self.q_no += 1
 
