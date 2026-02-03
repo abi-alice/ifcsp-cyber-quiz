@@ -4,70 +4,19 @@ import csv # Allows writing of results to CSV file
 import re # Allows format check of name entry
 from datetime import datetime # Allows timestamp to be recorded with results 
 
-'''
-questions = [
-    "Passwords should be...?",
-    "What does NCSC advise for password creation?",
-    "How should you classify data containing personally identifiable information?",
-    "What should you do if you come across a suspicious email?",
-    "When using a VPN, what can't you hide?",
-    "What's the best way to minimise your digital footprint?",
-    "Which part of your car is the most vulnerable to hacking?",
-    "Which people in a business should be responsible for cybersecurity?",
-    "Which of the following are considered personal data under GDPR?",
-    "What is a firewall?",
-    "How often should you update software?",
-    "What is malware?",
-    "What is two factor authentication?"
-    ] 
-answer_opts = [
-                ['complex and unique', 'similar and short', 'basic and easy', 'short and complex'],
-                ['birth date', 'family info', 'three random words', 'name of a pet'],
-                ['SNI', 'Not Protectively Marked', 'Protect-Commercial and Contracts', 'Protect-Private'],
-                ['Click on all the links', 'Report and delete it', 'Forward the email to your colleagues', 'Reply to it'],
-                ['Your identity', 'Your data', "The fact you're using a VPN", 'Your device'],
-                ['Take less photos on your phone', 'Post less on social media', 'Travel less with your phone', 'Use your phone more'],
-                ['Entertainment system', 'Wireless key fob', 'Cruise control', 'Warning lights'],
-                ['Directors', 'IT specialists', 'Managers', 'All personnel'],
-                ['IP address', 'Birthdate', 'Home address', 'All of the above'],
-                ['A physical wall for servers', 'Software monitoring network traffic', 'A type of virus', 'When a wall catches fire'],
-                ['Never', 'Twice a year', 'As soon as updates are available', 'When something breaks'],
-                ['Software designed to harm', 'An antivirus program', 'A type of hardware', 'A type of clothes'],
-                ['Using two passwords', 'Using a password and other authentication method', 'Having two accounts', 'Logging in twice']
-               ]
 
-answers = [0, 2, 3, 1, 2, 1, 0, 3, 3, 1, 2, 0, 1] 
-'''
 quiz_questions = "question_and_answer.csv"
 results = "results.csv"
 
 
 class CyberQuiz(tk.Tk):
-    """A class to represent the quiz itself.
+    """A tkinter based cybersecurity quiz app.
     
-    Methods: 
-    start_quiz()
-    load_question()
-    submit():
-    get_name()
-    display_output()
-    error_handler()
-    format_check()
-    presence_check()
-    length_check()
-    finish_quiz()
-    save_results()
-    
+    This app shows multiple-choice cybersecurity questions from a CSV file, and saves the user's name and score to a CSV file.
+
     """
     def __init__(self):
-        """ Name entry and constructs all the necessary attributes for the quiz object.
-        
-        Parameters:
-        self: used to initialise within class
-
-        Returns:
-        tkinter frame
-        """
+        """ Initialise the CyberQuiz instance by initialising quiz window and loading questions. """
         super().__init__()
 
         self.title("Cyber Security Quiz")
@@ -107,6 +56,7 @@ class CyberQuiz(tk.Tk):
         self.submit_btn.pack(pady=20)
         
     def get_name(self):
+        """Gets user's name and validates it."""
         self.player_name = self.name_entry.get().strip().title()    
         if not self.presence_check(self.player_name):
             self.error_handler("Name cannot be left blank")
@@ -137,6 +87,7 @@ class CyberQuiz(tk.Tk):
             print(f"Something went wrong: {e}")
 
     def load_quiz(self, filepath):
+        """Loads questions, options, and answer index from CSV."""
         questions = []
         with open(filepath, 'r', newline='', encoding='utf-8') as f:
             reader = csv.DictReader(f)
@@ -150,30 +101,22 @@ class CyberQuiz(tk.Tk):
         return questions
     
     def start_quiz(self):
-        
+        """Loads main quiz frame and shows questions."""
         self.name_frame.pack_forget()
         self.quiz_frame.pack(pady=20)
         self.load_question()
     
-
-    
-
     def load_question(self):
+        """Displays currrent question and answer options"""
         self.selected.set(-1)
         q, options, _ = self.questions[self.q_no]
         self.question_label.config(text=f"Q{self.q_no + 1}: {q}")
         for i, opt in enumerate(options):
             self.radio_buttons[i].config(text=opt)
         
-    '''
-    def load_question(self):
-        self.selected.set(-1)
-        self.question_label.config(text=f"Q{self.q_no + 1}: {questions[self.q_no]}")
-        for i, opt in enumerate(answer_opts[self.q_no]):
-            self.radio_buttons[i].config(text=opt)
-    '''
 
     def submit(self):
+        """Checks if answer is selected, checks if selected answer is correct and updates score."""
         if self.selected.get() == -1:
             self.error_handler("You must select an answer!")
             return "No answer selected"
@@ -188,6 +131,7 @@ class CyberQuiz(tk.Tk):
             self.finish_quiz()
 
     def finish_quiz(self):
+        """Calculates and displays final score"""
         total = len(self.questions)
         percent = round((self.score / total) * 100, 1)
         self.save_result(self.player_name, percent)
