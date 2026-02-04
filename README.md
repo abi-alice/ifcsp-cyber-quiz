@@ -7,7 +7,25 @@ It is best to ensure cyber security principles are well ingrained among the work
 
 ## Design
 ### Functional Requirements
+- The application will display a window titled "Cyber Security Quiz".
+- The background colour of the window will be #afeeee.
+- The dimensions of the application window will be 900x700 pixels
+- The application will allow the user to input their name.
+- The application will read questions and answers from a CSV.
+- The application will store results, user's name, and timestamp in another CSV.
+- The application will display 13 questions, with each showing after the previous answer was submitted.
+- The application will allow the user to select an answer from four choices.
+- The application will show a "Submit" button below any input.
+- Once the quiz is complete, the application will display a messagebox with the final score and verification that the result has been saved.
+  
 ### Non-Functional Requirements
+- The application will handle invalid inputs gracefully without crashing.
+- The application will respond to input within one second.
+- The application will run on any system supporting Python and Tkinter.
+- The application will have pure functions with well-structured code.
+- The application will have appropriately readable font sizes and colours.
+- The application will be well documented to allow for easy understanding of the code.
+- The design for the application will allow for easy addition of new features.
 ### GUI Design
 ### Code Design
 ### Tech Stack Outline
