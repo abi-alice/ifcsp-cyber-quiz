@@ -7,9 +7,7 @@ It is best to ensure cyber security principles are well ingrained among the work
 
 ## Design
 ### Functional Requirements
-- The application will display a window titled "Cyber Security Quiz".
-- The background colour of the window will be #afeeee.
-- The dimensions of the application window will be 900x700 pixels
+- The application will raise awareness of basic cyber security.
 - The application will allow the user to input their name.
 - The application will read questions and answers from a CSV.
 - The application will store results, user's name, and timestamp in another CSV.
@@ -26,6 +24,12 @@ It is best to ensure cyber security principles are well ingrained among the work
 - The application will have appropriately readable font sizes and colours.
 - The application will be well documented to allow for easy understanding of the code.
 - The design for the application will allow for easy addition of new features.
+- The application will display a window titled "Cyber Security Quiz".
+- The background colour of the window will be #afeeee.
+- The dimensions of the application window will be 900x700 pixels.
+- The application will have an uncomplicated, easy to follow design.
+
+  
 ### GUI Design
 ### Code Design
 ### Tech Stack Outline
