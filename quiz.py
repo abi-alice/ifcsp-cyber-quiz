@@ -32,23 +32,23 @@ class CyberQuiz(tk.Tk):
         self.name_frame.pack(pady=50)
         self.name_frame.config(bg="pale turquoise")
 
-        tk.Label(self.name_frame, text="Enter your name:", font=("Arial", 14), bg="pale turquoise").pack(pady=10)
-        self.name_entry = tk.Entry(self.name_frame, font=("Arial", 12))
+        tk.Label(self.name_frame, text="Enter your name:", font=("Arial", 18), bg="pale turquoise").pack(pady=10)
+        self.name_entry = tk.Entry(self.name_frame, font=("Arial", 16))
         self.name_entry.pack(pady=10)
         
         
         
-        tk.Button(self.name_frame, text="Start Quiz", command=self.get_name, font=("Arial", 12)).pack(pady=10)
+        tk.Button(self.name_frame, text="Start Quiz", command=self.get_name, font=("Arial", 16)).pack(pady=10)
         
         self.quiz_frame = tk.Frame()
         self.quiz_frame.config(bg="pale turquoise")
 
-        self.question_label = tk.Label(self.quiz_frame, bg="pale turquoise", text="", font=("Arial", 16))
+        self.question_label = tk.Label(self.quiz_frame, bg="pale turquoise", text="", font=("Arial", 20))
         self.question_label.pack(pady=20)
 
         self.radio_buttons=[]
         for i in range(4):
-            rb = tk.Radiobutton(self.quiz_frame, bg="pale turquoise", text="", variable=self.selected, value=i, font=("Arial", 16))
+            rb = tk.Radiobutton(self.quiz_frame, bg="pale turquoise", text="", variable=self.selected, value=i, font=("Arial", 20))
             rb.pack(anchor="w", padx=50)
             self.radio_buttons.append(rb)
 
