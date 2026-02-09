@@ -44,20 +44,21 @@ This app was developed in Visual Studio Code using Python 3.11, Pytest, and Tkin
 ### User Documentation
 This application was designed for SZC employees and contractors to gauge general cyber and information security awareness in a more interesting way.
 #### Step 1: Cloning the repository
-As shown in the below picture, copy the HTTPS web URL to your clipboard.
+As shown in the below picture, copy the HTTPS web URL to your clipboard.  
+![Cloning the repository](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/clone%20repo%201.png)
 #### Step 2: Opening the quiz
-Open a terminal on your device, and type:
-``` cd /path/to/where/you/want/to/save/the/repository ```
-Then, type 
-``` git clone https://github.com/abi-alice/ifcsp-cyber-quiz.git ```. 
-Now you can open the repository in a code editor of your choice. If using Visual Studio code, type 
-```cd /path/to/repository/ ```
-and then
-```code .```
+Open a terminal on your device, and type:  
+``` cd /path/to/where/you/want/to/save/the/repository ```  
+Then, type  
+``` git clone https://github.com/abi-alice/ifcsp-cyber-quiz.git ```.  
+Now you can open the repository in a code editor of your choice. If using Visual Studio code, type  
+```cd /path/to/repository/ ```  
+and then  
+```code .```  
 as a shortcut to opening the repository.
 #### Step 3: Playing the quiz
-Make sure that the ```quiz.py``` file is selected and run the quiz. The screenshot below shows how to do this in Visual Studio Code.
-
+Make sure that the ```quiz.py``` file is selected and run the quiz. The screenshot below shows how to do this in Visual Studio Code.  
+![Running the quiz](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/vs%20code%20run%20quiz.png)  
 Follow the instructions shown in the application window; good luck and have fun! 🌟
 ### Technical Documentation
 ## Evaluation
