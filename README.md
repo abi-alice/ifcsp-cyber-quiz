@@ -84,8 +84,8 @@ Then, type
 Now you can create a venv if you choose to do so. Navigate to the repository using   
 ```cd /path/to/repository/ ``` 
 then create the venv:  
-```python -m venv <type name for virtual environment>```  
-To activate in Windows, type ```.\<virtual environment name>\Scripts\activate```, and to activate in macOS/Linux type ```source <virtual environment name>/bin/activate```.  
+```python -m venv <name for venv>```  
+To activate in Windows, type ```.\<venv name>\Scripts\activate```, and to activate in macOS/Linux type ```source <venv name>/bin/activate```.  
 You can now open the repository in your chosen code editor and follow the next steps to play the quiz.  
 Once you're finished with the quiz, type ```deactivate``` into your venv to deactivate it. 
 #### Step 4: Playing the quiz
