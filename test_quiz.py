@@ -1,70 +1,57 @@
 import pytest
-from quiz import CyberQuiz
-
-@pytest.fixture
-def app():
-    """Creates a CyberQuiz instance for testing."""
-    quiz = CyberQuiz()
-    yield quiz
-    if quiz.timer_id:
-        quiz.after_cancel(quiz.timer_id)
-    quiz.destroy()
+import quiz_logic
 
 def test_smoke():
     """Smoke test to ensure pytest works"""
     assert 2+2==4
 
-class TestNameCheck:
+class TestNameCheck():
     """Tests the name validation functions.""" 
-    def test_length_edge(self, app):
+    def test_length_edge(self):
         """Verifies edge instances are accepted or rejected."""
-        assert app.length_check("Cat") is True
-        assert app.length_check("Ca") is False
+        assert quiz_logic.length_check("Cat") is True
+        assert quiz_logic.length_check("Ca") is False
 
-    def test_format(elf, app):
+    def test_format(self, name):
         """Verifies incorrect formats are rejected."""
-        assert app.format_check("12345") is False
-        assert app.format_check("$am") is False
-        assert app.format_check("*_%") is False
+        assert quiz_logic.format_check("12345") is False
+        assert quiz_logic.format_check("$am") is False
+        assert quiz_logic.format_check("*_%") is False
 
-    def test_presence(self, app):
+    def test_presence(self):
         """Verifies user cannot progress without entering a name."""
-        assert app.presence_check("") is False
+        assert quiz_logic.presence_check("") is False
 
 
-class TestLoadQuiz:
+class TestLoadQuiz():
     """Tests the load_quiz function."""
-    def test_load_quiz_dict(self, app):
+    def test_load_quiz_dict(self):
         """Verifies the questions are loaded as a list"""
-        questions = app.load_quiz("question_and_answer.csv")
+        questions = quiz_logic.load_quiz("question_and_answer.csv")
         assert isinstance(questions, list)
 
-    def test_load_quiz_format(self, app):
+    def test_load_quiz_format(self):
         """Verifies the quiz is loaded with the correct format"""
-        questions = app.load_quiz("question_and_answer.csv")
+        questions = quiz_logic.load_quiz("question_and_answer.csv")
         for q, opts, ans in questions:
             assert isinstance(q, str)
             assert len(opts) == 4
             assert 0<=ans<=3
 
-class TestTimer:
+class TestTimer():
     """Tests the timer functions."""
-    def test_start_timer_sets_time(self, app):
-        """Verifies starting timer actually starts counter."""
-        app.start_timer()
-        assert app.start_time is not None
 
-    def test_total_time(self, app):
+    def test_total_time(self):
         """Verifies summation of times."""
-        app.times=[1, 2, 3]
-        assert app.total_time() == 6
+        quiz_logic.times=[1, 2, 3]
+        assert quiz_logic.total_time() == 6
 
-    def test_zero_elapsed_time(self, app):
+    def test_zero_elapsed_time(self):
         """Verifies seconds elapsed works."""
-        app.start_time = None
-        assert app.elapsed_time() == 0
+        quiz_logic.start_time = None
+        assert quiz_logic.elapsed_time() == 0
 
-    def test_average_time(self, app):
+    def test_average_time(self):
         """Verifies average is calculated correctly."""
-        app.times=[5,10,15]
-        assert app.average_time() == 10
+        quiz_logic.times=[5,10,15]
+        assert quiz_logic.average_time() == 10

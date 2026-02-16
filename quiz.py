@@ -78,7 +78,7 @@ class CyberQuiz(tk.Tk):
             self.start_quiz()
             return "OK"
         
-        
+    @staticmethod
     def format_check(self,name):
         format = re.compile(r"^[a-zA-Z- ]+$")
         return bool(format.match(name))
@@ -92,6 +92,7 @@ class CyberQuiz(tk.Tk):
             messagebox.askretrycancel("Error", message)
         except Exception as e:
             print(f"Something went wrong: {e}")
+
 
     def load_quiz(self, filepath):
         """Loads questions, options, and answer index from CSV."""
@@ -125,6 +126,7 @@ class CyberQuiz(tk.Tk):
             self.radio_buttons[i].config(text=opt)
         self.start_timer()
 
+    @staticmethod
     def start_timer(self):
         """Start timing a question."""
         self.start_time = time.time()
@@ -142,11 +144,14 @@ class CyberQuiz(tk.Tk):
     
     def elapsed_time(self):
         """Get seconds elapsed for current question."""
+        if self.start_time == None:
+            return 0
         return time.time() - self.start_time
     
     def average_time(self):
         """Calculates average time per question."""
         return sum(self.times) / len(self.times)
+    
     
     def total_time(self):
         """Gets total quiz time."""
