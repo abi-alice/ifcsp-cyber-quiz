@@ -3,6 +3,7 @@ from tkinter import messagebox # Shows error messages
 import csv # Allows reading questions and answers and writing of results
 import re # Allows format check of name entry
 from datetime import datetime # Allows timestamp to be recorded with results 
+import time # Allows time taken to answer questions to be recorded
 
 
 quiz_questions = "question_and_answer.csv"
@@ -16,7 +17,7 @@ class CyberQuiz(tk.Tk):
 
     """
     def __init__(self):
-        """ Initialise the CyberQuiz instance by initialising quiz window and loading questions. """
+        """ Initialise the CyberQuiz instance by initialising quiz window, timer, and loading questions. """
         super().__init__()
 
         self.title("Cyber Security Quiz")
@@ -28,6 +29,10 @@ class CyberQuiz(tk.Tk):
         self.selected = tk.IntVar()
         self.player_name = ""
 
+        self.start_time = None
+        self.times = []
+        self.timer_id = None
+
         self.name_frame = tk.Frame()
         self.name_frame.pack(pady=50)
         self.name_frame.config(bg="pale turquoise")
@@ -37,11 +42,13 @@ class CyberQuiz(tk.Tk):
         self.name_entry.pack(pady=10)
         
         
-        
         tk.Button(self.name_frame, text="Start Quiz", command=self.get_name, font=("Arial", 16)).pack(pady=10)
         
         self.quiz_frame = tk.Frame()
         self.quiz_frame.config(bg="pale turquoise")
+
+        self.timer_label = tk.Label(self.quiz_frame, bg="pale turquoise", text="", font=("Arial", 14, "bold"), fg="indigo")
+        self.timer_label.pack(pady=10)
 
         self.question_label = tk.Label(self.quiz_frame, bg="pale turquoise", text="", font=("Arial", 20))
         self.question_label.pack(pady=20)
@@ -52,7 +59,7 @@ class CyberQuiz(tk.Tk):
             rb.pack(anchor="w", padx=50)
             self.radio_buttons.append(rb)
 
-        self.submit_btn = tk.Button(self.quiz_frame, text="Submit", command=self.submit)
+        self.submit_btn = tk.Button(self.quiz_frame, text="Submit", font=("Arial", 16), command=self.submit)
         self.submit_btn.pack(pady=20)
         
     def get_name(self):
@@ -116,7 +123,39 @@ class CyberQuiz(tk.Tk):
         self.question_label.config(text=f"Q{self.q_no + 1}: {q}")
         for i, opt in enumerate(options):
             self.radio_buttons[i].config(text=opt)
-        
+        self.start_timer()
+
+    def start_timer(self):
+        """Start timing a question."""
+        self.start_time = time.time()
+        self.update_timer()
+
+    def stop_timer(self):
+        """Stops timing when answer is submitted and records time elapsed in seconds."""
+        if self.timer_id:
+            self.after_cancel(self.timer_id)
+            self.timer_id = None
+        elapsed = time.time() - self.start_time
+        self.times.append(elapsed)
+        self.start_time = None
+        return elapsed
+    
+    def elapsed_time(self):
+        """Get seconds elapsed for current question."""
+        return time.time() - self.start_time
+    
+    def average_time(self):
+        """Calculates average time per question."""
+        return sum(self.times) / len(self.times)
+    
+    def total_time(self):
+        """Gets total quiz time."""
+        return sum(self.times)
+    
+    def update_timer(self):
+        """Updates the timer label every second."""
+        self.timer_label.config(text=f"Time:{int(self.elapsed_time())}s")
+        self.timer_id = self.after(1000, self.update_timer)
 
     def submit(self):
         """Checks if answer is selected, checks if selected answer is correct and updates score."""
@@ -124,6 +163,7 @@ class CyberQuiz(tk.Tk):
             self.error_handler("You must select an answer!")
             return "No answer selected"
         
+        self.stop_timer()
         if self.selected.get() == self.questions[self.q_no][2]:
             self.score +=1
         self.q_no += 1
@@ -147,7 +187,7 @@ class CyberQuiz(tk.Tk):
         
         with open(results, 'a', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow([name, percentage, timestamp])
+            writer.writerow([name, percentage, round((self.average_time()), 1), round((self.total_time()), 1), timestamp])
 
 if __name__ == "__main__":
     quiz = CyberQuiz()
