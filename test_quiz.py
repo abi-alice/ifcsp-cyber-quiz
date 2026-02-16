@@ -44,20 +44,20 @@ class TestTimer:
     """Tests the timer functions."""
     def test_start_timer_sets_time(self):
         """Verifies starting timer actually starts counter."""
-        quiz.start_timer()
+        quiz.start_timer(self)
         assert quiz.start_time is not None
 
     def test_total_time(self):
         """Verifies summation of times."""
         quiz.times=[1, 2, 3]
-        assert quiz.total_time() == 6
+        assert quiz.total_time(self) == 6
 
     def test_zero_elapsed_time(self):
         """Verifies seconds elapsed works."""
         quiz.start_time = None
-        assert quiz.elapsed_time() == 0
+        assert quiz.elapsed_time(self) == 0
 
     def test_average_time(self):
         """Verifies average is calculated correctly."""
         quiz.times=[5,10,15]
-        assert quiz.average_time() == 10
+        assert quiz.average_time(self) == 10
