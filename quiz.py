@@ -78,7 +78,6 @@ class CyberQuiz(tk.Tk):
             self.start_quiz()
             return "OK"
         
-    @staticmethod
     def format_check(self,name):
         format = re.compile(r"^[a-zA-Z- ]+$")
         return bool(format.match(name))

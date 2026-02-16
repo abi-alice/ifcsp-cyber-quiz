@@ -12,7 +12,7 @@ class TestNameCheck():
         assert quiz_logic.length_check("Cat") is True
         assert quiz_logic.length_check("Ca") is False
 
-    def test_format(self, name):
+    def test_format(self):
         """Verifies incorrect formats are rejected."""
         assert quiz_logic.format_check("12345") is False
         assert quiz_logic.format_check("$am") is False
@@ -26,7 +26,7 @@ class TestNameCheck():
 class TestLoadQuiz():
     """Tests the load_quiz function."""
     def test_load_quiz_dict(self):
-        """Verifies the questions are loaded as a list"""
+        """Verifies the questions are loaded as a list."""
         questions = quiz_logic.load_quiz("question_and_answer.csv")
         assert isinstance(questions, list)
 
@@ -43,15 +43,15 @@ class TestTimer():
 
     def test_total_time(self):
         """Verifies summation of times."""
-        quiz_logic.times=[1, 2, 3]
-        assert quiz_logic.total_time() == 6
-
-    def test_zero_elapsed_time(self):
-        """Verifies seconds elapsed works."""
-        quiz_logic.start_time = None
-        assert quiz_logic.elapsed_time() == 0
+        times=[1, 2, 3]
+        assert quiz_logic.calculate_total_time(times) == 6
 
     def test_average_time(self):
         """Verifies average is calculated correctly."""
-        quiz_logic.times=[5,10,15]
-        assert quiz_logic.average_time() == 10
+        times=[5,10,15]
+        assert quiz_logic.calculate_average_time(times) == 10
+    
+    def test_average_time_empty(self):
+        """Verifies average is 0 when list of times is empty."""
+        times = []
+        assert quiz_logic.calculate_average_time(times) == 0
