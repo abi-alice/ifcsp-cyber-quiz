@@ -1,6 +1,6 @@
 import tkinter as tk # Imports library for GUI
 from tkinter import messagebox # Shows error messages
-import csv # Allows writing of results to CSV file
+import csv # Allows reading questions and answers and writing of results
 import re # Allows format check of name entry
 from datetime import datetime # Allows timestamp to be recorded with results 
 
