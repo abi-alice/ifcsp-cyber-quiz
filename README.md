@@ -41,7 +41,7 @@ It is best to ensure cyber security principles are well ingrained among the work
 The class diagram below was created using [diagrams.net](diagrams.net) and summarises the code design.
 The ```CyberQuiz``` class inherits from the ```tk.Tk``` class, which provides the GUI functionality using Tkinter. This inheritance allows ```CyberQuiz``` to use and the methods and attributes of ```tk.Tk```, creating a customised window with features for user input, input validation, displaying message boxes, and using CSVs.
 
-![class diagram for the CyberQuiz class](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/class%20diagram.png))
+![class diagram for the CyberQuiz class](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/class%20diagram.png)
 
 ### Tech Stack Outline
 
