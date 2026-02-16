@@ -3,6 +3,10 @@ from quiz import CyberQuiz
 
 quiz = CyberQuiz
 
+def test_smoke():
+    """Smoke test to ensure pytest works"""
+    assert 2+2==4
+
 class TestNameCheck:
     """Tests the name validation functions.""" 
     def test_length_edge(self):
@@ -19,6 +23,7 @@ class TestNameCheck:
     def test_presence(self):
         """Verifies user cannot progress without entering a name."""
         assert quiz.presence_check(self, "") == False
+
 
 class TestLoadQuiz:
     """Tests the load_quiz function."""
