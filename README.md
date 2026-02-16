@@ -41,7 +41,7 @@ It is best to ensure cyber security principles are well ingrained among the work
 The class diagram below was created using [diagrams.net](diagrams.net) and summarises the code design.
 The ```CyberQuiz``` class inherits from the ```tk.Tk``` class, which provides the GUI functionality using Tkinter. This inheritance allows ```CyberQuiz``` to use and the methods and attributes of ```tk.Tk```, creating a customised window with features for user input, input validation, displaying message boxes, and using CSVs.
 
-![class diagram for the CyberQuiz class](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/CyberQuiz.drawio.png)
+![class diagram for the CyberQuiz class](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/class%20diagram.png))
 
 ### Tech Stack Outline
 
@@ -50,6 +50,33 @@ This app was developed in Visual Studio Code using Python 3.11, Pytest, and Tkin
 ## Development
 
 ## Testing
+
+The application was tested by both manual and automated unit testing. Automated testing and the use of continuous integration (CI) when developing the timer feature was useful as I didn't have to keep running the application.
+However, especially when testing GUI features it was best to use manual testing too as I could then adopt the perspective of an end user.
+This made functional and non-functional requirement testing more effective, for example checking that the text contrasted the background enough and was big enough to read easily.
+I used pytest in my automated testing, howvever only incorporated CI when I added the timer function.
+
+### Manual Testing
+
+| Test Case ID | Functionality | Test Description | Expected Result | Actual Result | Pass/Fail |
+|--------------|---------------|------------------|-----------------|---------------|-----------|
+| 1 | Accessibility | Test the application is easy to read | Adequate colour contrast and text size | Application can be read and understood easily thanks to text size and contrast | Pass |
+| 2 | Display | Tests messageboxes show | Messagebox appears in the case of invalid name entry and at completion of the quiz | Messagebox appears and displays correct message | Pass |
+| 3 | Display | Tests that timer is visible and counts up | Purple timer counting up each second | Timer not visible | Fail |
+| 4 | Display | Tests that timer is visible and counts up | Purple timer counting up each second | Timer visible and updating | Pass |
+| 5 | Core function | Tests that program is writing results correctly to CSV | CSV updated with name and statistics | CSV stays empty | Fail |
+| 6 | Core function | Tests that program is writing results correctly to CSV | CSV updated with name and statistics | CSV is updated correctly | Pass |
+| 7 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | Quiz starts as normal | Fail |
+| 8 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | Messagebox repeatedly appears even after dismissingerror message | Fail |
+| 9 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | User can retype name and quiz starts if valid | Pass |
+
+### Automated Testing
+
+![1 test passing](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/1%20test%20passed.png)
+![5 tests passing](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/5%20tests%20passing.png)
+![all tests passing](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/all%20tests%20passing.png)
+
+The above images show automated tests gradually passing. Almost all of them failed in the first photo as the testing file was written badly, and the following pictures required tweaks to the main quiz file and creating a separate file of the quiz logic to be tested, the reason for which is explained in the technical documentation.
 
 ## Documentation
 
@@ -95,4 +122,27 @@ Follow the instructions shown in the application window; good luck and have fun!
 
 ### Technical Documentation
 
+Explanations of the code which are more detailed than the docstrings can be found in the **Development Section** above.
+This application used PEP8 naming conventions for variables and classes.
+Screen resolution must be minimum 900x700 pixels as this is the size of the quiz window.
+
+#### Running your own tests
+
+If you would like to run your own tests locally for the quiz, follow the above steps to clone the repository, and ensure that pytest is installed.
+You can do this by running ```pip install pytest``` in the venv. 
+To run pytest, simply type ```pytest``` in a terminal which is open in the folder of the repository. 
+You can also add more tests in the ```test_quiz.py``` file, however they must use the logic in the ```quiz_logic.py``` file.
+The current tests aren't very extensive but try to cover the main logic and a few edge instances.
+A separate file for the logic was created to avoid errors when the tests were running by separating the logic from the GUI, so the tests don't try to load the Tkinter GUI. 
+The functions from the main quiz file were directly copied to the logic file, and only altered as they were no longer in the ```CyberQuiz``` class.
+
+#### Dependencies
+
+As detailed in the comments of the code, ```tkinter``` is used for the GUI and is included with standard Python installations, so no additional packages are required.
+```time``` and ```datetime``` are used for the timer and timestamps respectively, both of which are stored in the results CSV.
+```csv``` is used for reading questions and saving results, as both utilise CSVs.
+```re``` provides regular expression matching operations, which was used in the ```format_check``` to ensure no special characters or numbers are used in the user's name input.
+
 ## Evaluation
+
+could've done GUI tests, implemented CI earlier,
