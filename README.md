@@ -1,7 +1,7 @@
 # Cyber Security Awareness Quiz Application
 
 Welcome to the Cyber Quiz App repository! 
-This simple tkinter GUI-based application using Python 3.11 will test users on their basic cyber security knowledge, and stores their name and result in a CSV file. My organisation is constructing a nuclear power station, so all employees must have basic cyber security awareness.
+This simple tkinter GUI-based application using [Python 3.11](https://www.python.org/downloads/release/python-3110/) will test users on their basic cyber security knowledge, and stores their name and result in a CSV file. My organisation is constructing a nuclear power station, so all employees must have basic cyber security awareness.
 This is vital as without it, the risk of classified information being leaked is at a much greater risk, and a data breach could put millions of people in danger.
 There is a large variety of teams with specific functions throughout the organisation, including many external contractors. However all teams handle organisational data in some way, and as construction progresses, the sensitivity of the data will only increase.
 It is best to ensure cyber security principles are well ingrained among the workforce so that good habits are built and risk from lack of knowledge stays as low as possible.
@@ -58,6 +58,13 @@ This app was developed in Visual Studio Code using Python 3.11, Pytest, and Tkin
 
 ## Development
 
+The various comments at the beginning of the code explain the reasons for each import, and the brief docstrings in the class ```CyberQuiz``` and in each function give an overview of their purpose.  
+```super().__init__()``` in the function ```__init__``` is used to intialise the attributes of the parent class, which in this case is Tkinter, as well as any attributes defined in the child class, ```CyberQuiz```.  
+
+Labels, buttons, and radio buttons are all initialised similarly, for example the 'Start Quiz' button, which is intialised below: 
+```tk.Button(self.name_frame, text="Start Quiz", command=self.get_name, font=("Arial", 16)).pack(pady=10)```
+```name_frame``` is a Tkinter frame, and defines the frame in which the button will be initialised.
+
 ## Testing
 
 The application was tested by both manual and automated unit testing. Automated testing and the use of continuous integration (CI) when developing the timer feature was useful as I didn't have to keep running the application.
@@ -76,7 +83,7 @@ I used pytest in my automated testing, howvever only incorporated CI when I adde
 | 5 | Core function | Tests that program is writing results correctly to CSV | CSV updated with name and statistics | CSV stays empty | Fail |
 | 6 | Core function | Tests that program is writing results correctly to CSV | CSV updated with name and statistics | CSV is updated correctly | Pass |
 | 7 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | Quiz starts as normal | Fail |
-| 8 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | Messagebox repeatedly appears even after dismissingerror message | Fail |
+| 8 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | Messagebox repeatedly appears even after dismissing error message | Fail |
 | 9 | Error handling | Tests that invalid name input isn't accepted | Messagebox appears with error message | User can retype name and quiz starts if valid | Pass |
 
 ### Automated Testing
