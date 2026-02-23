@@ -36,6 +36,15 @@ It is best to ensure cyber security principles are well ingrained among the work
   
 ### GUI Design
 
+The app was prototyped using Figma, with the first two and last two screens being shown without the bulk of the questions in between.
+The interactive prototype can be found [here](https://www.figma.com/proto/XhfVawua1lscAGsC1LFh0Z/Quiz-Plan?node-id=0-1&t=wTGycgCyPZGa6Z6B-1).
+The below pictures show each stage of the interactive prototype.  
+
+![first screen](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/prototype%201.png)
+![second screen](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/prototype%202.png)
+![penultimate screen](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/prototype%203.png)
+![last screen](https://github.com/abi-alice/ifcsp-cyber-quiz/blob/main/images/prototype%204.png)
+
 ### Code Design
 
 The class diagram below was created using [diagrams.net](diagrams.net) and summarises the code design.
