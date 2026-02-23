@@ -125,7 +125,6 @@ class CyberQuiz(tk.Tk):
             self.radio_buttons[i].config(text=opt)
         self.start_timer()
 
-    @staticmethod
     def start_timer(self):
         """Start timing a question."""
         self.start_time = time.time()
