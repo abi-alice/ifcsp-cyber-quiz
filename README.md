@@ -1,5 +1,5 @@
 # Cyber Security Awareness Quiz Application
-```293 words in table```
+
 Welcome to the Cyber Quiz App repository! 
 This simple tkinter GUI-based application using [Python 3.11](https://www.python.org/downloads/release/python-3110/) will test users on their basic cyber security knowledge, and stores their name and result in a CSV file. My organisation is constructing a nuclear power station, so all employees must have basic cyber security awareness.
 This is vital as without it, the risk of classified information being leaked is at a much greater risk, and a data breach could put millions of people in danger.
@@ -250,5 +250,6 @@ However, it was a good experience for me as it helped to further develop my prog
 Finally, I think writing the user documentation went well and I also enjoyed writing the steps for others to run the code on their own devices.  
 To further improve on this project, I could've incorporated GUI tests as well as logic tests and implemented CI earlier in the process.
 This would have improved my development process as the tests would be more in depth and the features to fix would be clearer.  
-I could have also made the GUI and hence Figma diagram slightly more detailed which would make the quiz more interesting for the end user.  
+I could have also made the GUI and hence Figma diagram slightly more detailed which would make the quiz more interesting for the end user.
+To better show the development of the project, I should've uploaded the Figma diagram and class diagram earlier in the process to show that I created them in advance, and I shouldn't have updated the class diagram after adding the timer, as this would show more progression in my ideas for the project.
 Overall, the development of the project went well and I enjoyed the whole process as it developed my skills and pushed me from my comfort zone.
