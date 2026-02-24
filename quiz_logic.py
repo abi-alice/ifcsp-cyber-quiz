@@ -1,5 +1,5 @@
-import re
-import csv
+import re # Checks regular expression
+import csv # Reads and writes to CSVs
 
 
 def length_check(name):

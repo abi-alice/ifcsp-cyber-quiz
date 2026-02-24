@@ -1,5 +1,4 @@
-import pytest
-import quiz_logic
+import quiz_logic # File where the modules being tested are stored
 
 def test_smoke():
     """Smoke test to ensure pytest works"""
