@@ -30,7 +30,7 @@ It is best to ensure cyber security principles are well ingrained among the work
 - The design for the application will allow for easy addition of new features.
 - The application will display a window titled "Cyber Security Quiz".
 - The background colour of the window will be #afeeee.
-- The dimensions of the application window will be 900x700 pixels.
+- The dimensions of the application window will be 1100x800 pixels.
 - The application will have an uncomplicated, easy to follow design.
 
   
@@ -223,7 +223,7 @@ Follow the instructions shown in the application window; good luck and have fun!
 
 Explanations of the code which are more detailed than the docstrings can be found in the **Development Section** above.
 This application used PEP8 naming conventions for variables and classes.
-Screen resolution must be minimum 900x700 pixels as this is the size of the quiz window.
+Screen resolution must be minimum 1100x800 pixels as this is the size of the quiz window.
 
 #### Running your own tests
 
