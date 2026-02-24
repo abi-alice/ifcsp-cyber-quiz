@@ -21,7 +21,7 @@ class CyberQuiz(tk.Tk):
         super().__init__()
 
         self.title("Cyber Security Quiz")
-        self.geometry('900x700')
+        self.geometry('1100x800')
         self.config(bg="pale turquoise")
         self.q_no = 0
         self.score = 0
